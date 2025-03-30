@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-demo-backend
+  namespace: k8s-demo
+  labels:
+    app: k8s-demo-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-demo-backend
+  template:
+    metadata:
+      labels:
+        app: k8s-demo-backend
+    spec:
+      containers:
+        - name: k8s-demo-backend
+          image: khoanam225/k8s-demo-backend:latest # Your locally built image
+          imagePullPolicy: IfNotPresent # Use local images, don't try to pull
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+            requests:
+              cpu: "0.2"
+              memory: "256Mi"
