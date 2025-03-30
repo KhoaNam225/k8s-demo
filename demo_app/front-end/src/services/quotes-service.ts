@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Quote } from '@/models/quote'
 
-const QUOTABLE_API_URL = 'https://api.quotable.kurokeita.dev/api/quotes'
+const QUOTABLE_API_URL = 'http://localhost:8080/api/v1/quotes'
 
 export const QuoteService = {
   // Get a random quote
