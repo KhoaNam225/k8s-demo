@@ -32,7 +32,7 @@ function App() {
             fallback={
               <div className="flex gap-5 h-[160px] items-center">
                 <Loader2 className="h-6 w-6 animate-spin text-primary" />
-                <p class="text-lg">Fetching a brilliant quote...</p>
+                <p className="text-lg">Fetching a brilliant quote...</p>
               </div>
             }>
             <QuoteDisplay quotePromise={quotePromise} />

@@ -2,7 +2,7 @@
 export type Quote = {
   _id: string
   content: string
-  author: string
+  author: { name: string }
   tags: string[]
   authorSlug: string
   length: number
