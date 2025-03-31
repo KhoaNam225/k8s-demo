@@ -95,7 +95,9 @@ def get_pods_by_namespace(namespace: str):
     Get all pods in a specific namespace.
     """
     try:
-        pods = client_v1.list_namespaced_pod(namespace)
+        pods = client_v1.list_namespaced_pod(
+            namespace if len(namespace) > 0 else "default"
+        )
         result = []
         for pod in pods.items:
             result.append(get_pod_information(pod))
