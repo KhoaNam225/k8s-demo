@@ -18,7 +18,7 @@ spec:
       containers:
         - name: k8s-demo-frontend
           image: khoanam225/k8s-demo-frontend:latest # Your locally built image
-          imagePullPolicy: IfNotPresent # Use local images, don't try to pull
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           resources:
