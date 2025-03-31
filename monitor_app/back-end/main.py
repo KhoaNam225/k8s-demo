@@ -1,6 +1,6 @@
-from kubernetes import client, config
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from kube_utils import get_all_nodes
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -15,9 +15,9 @@ app.add_middleware(
 )
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.get("/api/v1/nodes")
+def get_nodes():
+    return get_all_nodes()
 
 
 # Configs can be set in Configuration class directly or using helper utility
