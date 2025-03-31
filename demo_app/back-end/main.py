@@ -4,10 +4,7 @@ from httpx import AsyncClient
 
 app = FastAPI()
 
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-]
+origins = ["*"]  # Allow all origins for CORS
 
 app.add_middleware(
     CORSMiddleware,

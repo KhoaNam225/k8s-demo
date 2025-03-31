@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Quote } from '@/models/quote'
 
-const QUOTABLE_API_URL = 'http://localhost:8080/api/v1/quotes'
+const QUOTABLE_API_URL = `${import.meta.env.VITE_QUOTABLE_API_URL}`
 
 export const QuoteService = {
   // Get a random quote
