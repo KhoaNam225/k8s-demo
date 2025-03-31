@@ -20,3 +20,13 @@ class NodeInformation(CamelModel):
     node_cpu: int
     node_memory: float
     node_ip: str
+
+
+class PodInformation(CamelModel):
+    pod_name: str
+    pod_container_image: str
+    pod_status: str
+    pod_created: str
+    pod_cpu: str
+    pod_memory: str
+    pod_node_name: str
