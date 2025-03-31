@@ -24,7 +24,6 @@ function App() {
   })
 
   const [namespace, setNamespace] = useState<string>('')
-  const [nodeRefreshKey, setNodeRefreshKey] = useState<number>(0)
 
   if (namespaces.length === 0 || namespaces === undefined) {
     return (
@@ -56,7 +55,7 @@ function App() {
       </Suspense>
       <div className="w-[90%] max-h-[80%] flex flex-row gap-5 flex-wrap justify-center items-center">
         <Suspense fallback={<div>Loading nodes...</div>}>
-          <NodesList key={nodeRefreshKey} namespace={namespace} />
+          <NodesList namespace={namespace} />
         </Suspense>
       </div>
     </div>
