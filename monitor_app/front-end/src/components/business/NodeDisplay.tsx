@@ -6,8 +6,10 @@ import { Cpu, MemoryStick, Check, GlobeLock, HardDrive, Container, History, Ban 
 import { Suspense } from 'react'
 
 export const PodDisplay = ({ pod }: { pod: Pod }) => {
+  const cardBackground =
+    pod.podStatus === 'Running' ? 'bg-green-100' : pod.podStatus === 'Pending' ? 'bg-yellow-100' : 'bg-red-100'
   return (
-    <Card className="my-3">
+    <Card className={'my-3 ' + cardBackground}>
       <CardHeader>
         <CardTitle className="">{pod.podName}</CardTitle>
         <div className="flex flex-row gap-5">
@@ -46,13 +48,16 @@ export const PodDisplay = ({ pod }: { pod: Pod }) => {
   )
 }
 
-export const NodeDisplay = ({ node, namespace }: { node: Node; namespace: string }) => {
+export const NodeDisplay = ({ node, namespace, index }: { node: Node; namespace: string; index: number }) => {
   const { data: pods } = useSuspenseQuery({
     queryKey: ['pods', node.nodeName, namespace],
     queryFn: async () => {
       const data = await KubernetesMonitoringService.getPodsByNamespace(namespace)
       return data.filter(pod => pod.podNodeName === node.nodeName) as Pod[]
     },
+    refetchInterval: 1000,
+    refetchOnMount: true,
+    gcTime: index * 200,
   })
 
   return (
@@ -115,5 +120,5 @@ export const NodesList = ({ namespace }: { namespace: string }) => {
     return <p>No nodes found</p>
   }
 
-  return data.map(node => <NodeDisplay key={node.nodeName} node={node} namespace={namespace} />)
+  return data.map((node, idx) => <NodeDisplay key={node.nodeName} node={node} namespace={namespace} index={idx} />)
 }
