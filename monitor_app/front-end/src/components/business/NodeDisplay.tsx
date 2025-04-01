@@ -37,14 +37,6 @@ export const PodDisplay = ({ pod }: { pod: Pod }) => {
         </div>
       </CardHeader>
     </Card>
-    // <div>
-    //   <p>{pod.podName}</p>
-    //   <p>{pod.podContainerImage}</p>
-    //   <p>{pod.podStatus}</p>
-    //   <p>{pod.podCreated}</p>
-    //   <p>{pod.podCpu}</p>
-    //   <p>{pod.podMemory}</p>
-    // </div>
   )
 }
 
