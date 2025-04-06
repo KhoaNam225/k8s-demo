@@ -20,7 +20,7 @@ spec:
           image: khoanam225/k8s-demo-backend:latest # Your locally built image
           imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
           resources:
             limits:
               cpu: "0.5"
