@@ -8,7 +8,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-    - host: 192.168.65.4.nip.io # You can use any domain or IP
+    - host: 192.168.68.2.nip.io # You can use any domain or IP
       http:
         paths:
           - path: /
