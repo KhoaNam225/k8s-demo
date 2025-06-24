@@ -3,6 +3,7 @@ __pycache__/
 media/
 slides/
 slides_assets/
+final_slide_assets/
 .DS_Store
 slides.html
 output_assets/

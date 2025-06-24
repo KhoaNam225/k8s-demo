@@ -1365,7 +1365,7 @@ class FeedbackForm(Slide):
         self.next_slide()
 
         github_demo_qr_code = ImageMobject(
-            filename_or_array="../assets/github_demo_qr_code.png"
+            filename_or_array="../assets/feedback_form_qrcode.png"
         )
         github_demo_qr_code.scale(1.5)
 

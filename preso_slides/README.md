@@ -9,3 +9,7 @@ Main topics covered in this video:
 2. How Kubernetes comes into play.
 
 3. Some basic features of Kubernetes.
+
+# How to view the slides?
+
+Open the `final_slide.html` file inside the `main` folder with your favourite browser and enjoy!
