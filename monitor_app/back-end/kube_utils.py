@@ -1,7 +1,9 @@
 from kubernetes import client, config
 from models import NodeInformation, PodInformation
 
-config.load_kube_config()
+config.load_kube_config(
+    config_file="~/.kube/k3s-config"
+)  # Load kubeconfig from default location
 client_v1 = client.CoreV1Api()
 
 
