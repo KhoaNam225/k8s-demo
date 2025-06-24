@@ -30,6 +30,7 @@ from manim import (
     SVGMobject,
     Text,
     TypeWithCursor,
+    Table,
 )
 from manim_slides.slide import Slide
 
@@ -1173,4 +1174,201 @@ class KubernetesComponent(Slide):
             Create(ingress_to_frontend_arrow, run_time=2),
             Create(ingress_to_backend_arrow, run_time=2),
         )
+        self.next_slide()
+
+
+class Demo(Slide):
+    def construct(self):
+        header_text = Text(text="Demo").scale(1.2)
+        header_text.center()
+        self.add(header_text)
+        self.play(FadeIn(header_text))
+
+        self.next_slide()
+
+
+class K8sOnDifferentCloudProviders(Slide):
+    def construct(self):
+        header_text = Text(text="Kubernetes on Different Cloud Providers").scale(0.7)
+        header_text.to_edge(edge=UP)
+        cursor = CURSOR.copy().scale(0.8).move_to(header_text[0])  # Position the cursor
+        self.add(header_text)
+        self.play(
+            TypeWithCursor(
+                text=header_text,
+                cursor=cursor,
+                leave_cursor_on=False,
+                time_per_char=0.05,
+            )
+        )
+
+        self.next_slide()
+
+        icons_group = Group()
+
+        eks_logo = ImageMobject(filename_or_array="../assets/eks_logo.png")
+        eks_text = Text(text="Amazon EKS")
+        eks_logo.add(eks_text.next_to(eks_logo, DOWN, buff=0.5))
+        eks_logo.scale(0.4)
+
+        aks_logo = ImageMobject(filename_or_array="../assets/aks_logo.png")
+        aks_text = Text(text="Azure AKS")
+        aks_logo.add(aks_text.next_to(aks_logo, DOWN, buff=0.5))
+        aks_logo.scale_to_fit_height(eks_logo.height)
+        aks_logo.next_to(eks_logo, RIGHT, buff=2)
+
+        gke_logo = ImageMobject(filename_or_array="../assets/gke_logo.png")
+        gke_text = Text(text="Google GKE")
+        gke_logo.add(gke_text.next_to(gke_logo, DOWN, buff=0.5))
+        gke_logo.scale_to_fit_height(aks_logo.height)
+        gke_logo.next_to(aks_logo, RIGHT, buff=2)
+
+        icons_group.add(eks_logo, aks_logo, gke_logo)
+        icons_group.center()
+
+        self.play(FadeIn(eks_logo))
+
+        self.next_slide()
+        self.play(FadeIn(aks_logo))
+
+        self.next_slide()
+        self.play(FadeIn(gke_logo))
+
+
+class K8sVersusCloudNativeServices(Slide):
+    def construct(self):
+        header_text = Text(text="Kubernetes vs PaaS/FaaS").scale(0.7)
+        header_text.to_edge(edge=UP)
+        cursor = CURSOR.copy().scale(0.8).move_to(header_text[0])  # Position the cursor
+        self.add(header_text)
+        self.play(
+            TypeWithCursor(
+                text=header_text,
+                cursor=cursor,
+                leave_cursor_on=False,
+                time_per_char=0.05,
+            )
+        )
+
+        self.next_slide()
+
+        comparison_table = ImageMobject(
+            filename_or_array="../assets/k8s_vs_PaaSFaaS.png"
+        )
+        comparison_table.scale(1.5)
+        comparison_table.next_to(header_text, DOWN, buff=0)
+        self.add(comparison_table)
+        self.play(FadeIn(comparison_table))
+
+        self.next_slide()
+
+
+class ResourcesUsedInSlides(Slide):
+    def construct(self):
+        header_text = Text(text="Resources Used in Slides").scale(0.7)
+        header_text.to_edge(edge=UP)
+        cursor = CURSOR.copy().scale(0.8).move_to(header_text[0])  # Position the cursor
+        self.add(header_text)
+        self.play(
+            TypeWithCursor(
+                text=header_text,
+                cursor=cursor,
+                leave_cursor_on=False,
+                time_per_char=0.05,
+            )
+        )
+
+        self.next_slide()
+
+        icons_group = Group()
+
+        github_demo_qr_code = ImageMobject(
+            filename_or_array="../assets/github_demo_qr_code.png"
+        )
+        github_qr_code_text = Text(text="Demo Source Code")
+        github_demo_qr_code.add(
+            github_qr_code_text.next_to(github_demo_qr_code, DOWN, buff=0.5)
+        )
+
+        notion_qr_code = ImageMobject(filename_or_array="../assets/notion_qr_code.png")
+        notion_qr_text = Text(text="Tutorial Notes")
+        notion_qr_code.add(notion_qr_text.next_to(notion_qr_code, DOWN, buff=0.5))
+        notion_qr_code.scale_to_fit_height(github_demo_qr_code.height)
+        notion_qr_code.next_to(github_demo_qr_code, RIGHT, buff=2)
+
+        icons_group.add(github_demo_qr_code, notion_qr_code)
+        icons_group.center()
+
+        self.play(FadeIn(github_demo_qr_code))
+
+        self.next_slide()
+
+        self.play(FadeIn(notion_qr_code))
+
+        self.next_slide()
+
+
+class OtherUsefulResources(Slide):
+    # TODO: Add other useful resources
+    def construct(self):
+        header_text = Text(text="Other Useful Resources").scale(0.7)
+        header_text.to_edge(edge=UP)
+        cursor = CURSOR.copy().scale(0.8).move_to(header_text[0])  # Position the cursor
+        self.add(header_text)
+        self.play(
+            TypeWithCursor(
+                text=header_text,
+                cursor=cursor,
+                leave_cursor_on=False,
+                time_per_char=0.05,
+            )
+        )
+
+        self.next_slide()
+
+        resources = Text(text="Resources:").scale(0.5)
+        resources.next_to(header_text, direction=DOWN, buff=1)
+        self.play(FadeIn(resources))
+
+        self.next_slide()
+
+        resource_list = [
+            "https://kubernetes.io/docs/concepts/",
+            "https://www.docker.com/resources/what-container/",
+            "https://www.youtube.com/watch?v=PH-2FfFD2PU",
+            "https://www.youtube.com/watch?v=4ht22ReBjno",
+        ]
+
+        for resource in resource_list:
+            resource_text = Text(text=resource).scale(0.5)
+            resource_text.next_to(resources, DOWN, buff=0.2)
+            resources.add(resource_text)
+            self.play(FadeIn(resource_text))
+
+
+class FeedbackForm(Slide):
+    # TODO: Add QR code for feedback form
+    def construct(self):
+        header_text = Text(text="We would love to hear your feedback!").scale(0.7)
+        header_text.to_edge(edge=UP)
+        cursor = CURSOR.copy().scale(0.8).move_to(header_text[0])  # Position the cursor
+        self.add(header_text)
+        self.play(
+            TypeWithCursor(
+                text=header_text,
+                cursor=cursor,
+                leave_cursor_on=False,
+                time_per_char=0.05,
+            )
+        )
+
+        self.next_slide()
+
+        github_demo_qr_code = ImageMobject(
+            filename_or_array="../assets/github_demo_qr_code.png"
+        )
+        github_demo_qr_code.scale(1.5)
+
+        github_demo_qr_code.next_to(header_text, DOWN, buff=1)
+        self.play(FadeIn(github_demo_qr_code))
         self.next_slide()
