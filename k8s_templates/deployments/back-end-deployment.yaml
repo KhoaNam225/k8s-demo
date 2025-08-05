@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: k8s-demo-backend
-          image: khoanam225/k8s-demo-backend:latest # Your locally built image
+          image: acrregistry7629.azurecr.io/back-end:1.0.0 # Your locally built image
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

@@ -4,11 +4,16 @@ metadata:
   name: k8s-demo-ingress
   namespace: k8s-demo
   annotations:
-    # Traefik specific annotations
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    kubernetes.azure.com/tls-cert-keyvault-uri: https://akskeyvault2264.vault.azure.net/certificates/aks-ingress-tls/6dad76f036fd43ab920b32b2f37f2e28
 spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
+  tls:
+    - hosts:
+        - k8s-demo.australiaeast.cloudapp.azure.com
+      secretName: keyvault-k8s-demo-ingress
   rules:
-    - host: 192.168.72.2.nip.io # You can use any domain or IP
+    - host: k8s-demo.australiaeast.cloudapp.azure.com
+      # - host: 192.168.72.2.nip.io # You can use any domain or IP
       http:
         paths:
           - path: /
